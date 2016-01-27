@@ -28,7 +28,7 @@ module.exports = {
         },
         {
             // adding default extension
-            // why is it needed at all? => relative imports in angular2
+            // why is it needed at all? => relative imports in angular2 and rxjs
             resolveId: function (id, importer) {
                 //console.warn('Custom Id resolver', id, importer);
                 if (path.extname(id) || id === 'typescript-helpers') return null; //already has an extension or not relative path
@@ -47,25 +47,3 @@ module.exports = {
         })
     ]
 };
-
-
-/*{
- resolveId: function (id, importer) {
- if (path.extname(id)) return null; //already has an extension
-
- var pathToReturn = rollupUtils.addExtension(importer ? path.join(path.dirname(importer), id) : id, '.ts');
- //pathToReturn = path.relative(__dirname, pathToReturn);
-
- return pathToReturn;
- }
- },*/
-
-/*{
- // ignore everything that doesn't start with 'angular2/'
- // resolve the rest within the angular directory
- resolveId: function (id , importer ) {
-
- if ( !id.startsWith( 'angular2' )) return null;
- return path.join( 'node_modules/angular2/ts', id.slice( 'angular2'.length ) ) + '.ts';
- }
- },*/
